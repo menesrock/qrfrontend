@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Restaurant - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background: #6200EE;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Restaurant Login Test</h1>
+    <input type="email" id="email" placeholder="Email" value="admin@restaurant.com">
+    <input type="password" id="password" placeholder="Password" value="admin123">
+    <button onclick="login()">Login</button>
+    <div id="result"></div>
+
+    <script>
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = 'Logging in...';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '<strong>Success!</strong><br>' + 
+                        'User: ' + data.user.email + '<br>' +
+                        'Role: ' + data.user.role;
+                } else {
+                    resultDiv.innerHTML = '<strong>Error:</strong> ' + (data.error || 'Login failed');
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<strong>Connection Error:</strong> ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
