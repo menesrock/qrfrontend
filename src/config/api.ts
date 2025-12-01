@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // For Expo web, we need to use hardcoded values or Constants
-const API_URL = 'http://localhost:3000/api';
+// Use environment variable in production, fallback to localhost for development
+const API_URL = process.env.REACT_APP_API_URL || process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 // Create axios instance
 export const api = axios.create({
