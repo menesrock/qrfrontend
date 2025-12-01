@@ -10,7 +10,7 @@ projects:
             env: node
             plan: free
             region: oregon
-            buildCommand: npm install && npm run build
+            buildCommand: npm install && npx expo export:web
             startCommand: npx serve -s web-build -l 10000
             envVars:
               - key: NODE_ENV
