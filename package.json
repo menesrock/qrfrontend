@@ -6,7 +6,8 @@
   "scripts": {
     "start": "expo start --web",
     "web": "expo start --web",
-    "build": "expo build:web",
+    "build": "expo export:web",
+    "serve": "npx serve -s web-build -l 10000",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
