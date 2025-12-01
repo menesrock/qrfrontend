@@ -37,11 +37,11 @@
     "react-native-vector-icons": "^10.0.3",
     "react-native-web": "~0.19.9",
     "socket.io-client": "^4.6.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "@expo/webpack-config": "^19.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
-    "@expo/webpack-config": "^19.0.1",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^12.4.1",
     "@types/jest": "^29.5.11",
